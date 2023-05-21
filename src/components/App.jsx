@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Statistics } from './Feedback/Statistics';
 import { FeedbackOptions } from './Feedback/FeedbackOptions';
 import { Section } from './Feedback/Section';
+import * as css from './Feedback/feedback.styled';
 
 class App extends Component {
   state = {
@@ -76,7 +77,7 @@ class App extends Component {
   render() {
     const { good, neutral, bad } = this.state;
     return (
-      <div>
+      <css.DivAll>
         {/* {this.renderButton()}
         {this.renderStatistics()}
         {this.countTotalFeedback()}
@@ -97,7 +98,7 @@ class App extends Component {
             positivePercentage={this.countPositiveFeedbackPercentage}
           />
         </Section>
-      </div>
+      </css.DivAll>
     );
   }
 }
