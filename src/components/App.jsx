@@ -3,6 +3,7 @@ import { Statistics } from './Feedback/Statistics';
 import { FeedbackOptions } from './Feedback/FeedbackOptions';
 import { Section } from './Feedback/Section';
 import * as css from './Feedback/feedback.styled';
+import { Notification } from './Feedback/Notification';
 
 class App extends Component {
   state = {
@@ -90,13 +91,14 @@ class App extends Component {
         </Section>
 
         <Section title="Statistics">
-          <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={this.countTotalFeedback}
-            positivePercentage={this.countPositiveFeedbackPercentage}
-          />
+          {(this.countTotalFeedback() === 0) ? <Notification message="There is no feedback" /> :
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={this.countTotalFeedback}
+              positivePercentage={this.countPositiveFeedbackPercentage}
+            />}
         </Section>
       </css.DivAll>
     );
